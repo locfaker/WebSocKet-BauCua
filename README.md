@@ -1,6 +1,8 @@
 # 🎲 Bầu Cua Tôm Cá - Phiên bản Web (.NET 9 & SignalR)
 
-Trò chơi Bầu Cua Tôm Cá truyền thống được tái hiện trên nền tảng Web với công nghệ SignalR .
+![Game Demo](docs/demo.png)
+
+Trò chơi Bầu Cua Tôm Cá truyền thống được tái hiện trên nền tảng Web với công nghệ SignalR cho trải nghiệm thời gian thực mượt mà.
 
 ## 🎯 Tính năng
 - ✅ Giao diện 100% bản gốc, tái tạo chuẩn xác bằng HTML5/CSS3.
@@ -19,7 +21,7 @@ Dự án được xây dựng theo mô hình Client-Server:
 
 ### Yêu cầu hệ thống
 - .NET SDK 9.0 trở lên.
-- Trình duyệt web hiện đại (Chrome, Edge, Firefox).
+- Trình duyệt web (Chrome, Edge, Firefox).
 
 ### Các bước thực hiện
 1. **Khởi chạy Server**:

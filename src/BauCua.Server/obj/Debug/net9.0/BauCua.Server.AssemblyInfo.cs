@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BauCua.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34868fa60919c51ac3af62eae793651d4c647553")]
 [assembly: System.Reflection.AssemblyProductAttribute("BauCua.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BauCua.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
