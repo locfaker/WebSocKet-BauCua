@@ -1,0 +1,475 @@
+/* BẦU CUA TÔM CÁ - Game Clone */
+
+/* Variables */
+:root {
+    --white: #FFFFFF;
+    --gold: #FFD700;
+    --font-primary: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+    background: #000;
+}
+
+body {
+    font-family: var(--font-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container chính */
+.game-wrapper {
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.game-container,
+.loading-screen {
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/background.png') center center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+/* Hoa mai */
+.mai-flowers {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    z-index: 5;
+    pointer-events: none;
+    background: url('../assets/images/hoa_mai.png') top right / contain no-repeat;
+    top: 0;
+    right: 0;
+}
+
+/* Màn loading */
+.loading-screen {
+    justify-content: center;
+}
+
+.loading-content {
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-image {
+    width: 80%;
+    max-width: 350px;
+    margin-bottom: 20px;
+}
+
+.loading-bar-container {
+    width: 250px;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    transition: width 0.3s ease;
+}
+
+.btn-play {
+    margin-top: 20px;
+    width: 180px;
+    height: 70px;
+    background: url('../assets/images/btn_play.png') center center / contain no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-play:hover {
+    transform: scale(1.05);
+}
+
+/* Màn game */
+#game-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0 35px 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.header-title {
+    width: 60%;
+    max-width: 250px;
+    margin-top: 10px;
+    z-index: 10;
+}
+
+/* Khu vực xúc xắc */
+.dice-section {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    z-index: 10;
+}
+
+.dice-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dice {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dice-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dice-label {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 1px 1px 2px #000;
+}
+
+.dice.rolling {
+    animation: bounce 0.1s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* Nút điều khiển */
+.control-section {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-home,
+.btn-sound {
+    width: 45px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.btn-home {
+    background-image: url('../assets/images/btn_home.png');
+}
+
+.btn-sound {
+    background-image: url('../assets/images/btn_sound.png');
+}
+
+.btn-roll {
+    width: 160px;
+    height: 60px;
+    background: url('../assets/images/btn_roll.png') center center / contain no-repeat;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.btn-roll:active {
+    transform: scale(0.95);
+}
+
+/* Bàn cược */
+.betting-board-container {
+    flex: 1 1 auto;
+    width: 95%;
+    max-width: 400px;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+}
+
+.betting-grid-wrapper {
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: url('../assets/images/table.png') center center / contain no-repeat;
+    position: relative;
+}
+
+.betting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bet-card {
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.bet-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.bet-amount {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    background: #FFD700;
+    color: #000;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 2px 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    display: none;
+}
+
+.bet-card.active-bet {
+    background: rgba(255, 215, 0, 0.3);
+    box-shadow: inset 0 0 10px #FFD700;
+}
+
+.bet-card.winning {
+    animation: flash 0.5s infinite alternate;
+}
+
+@keyframes flash {
+    from {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    to {
+        background: rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Chip */
+.chip-section {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    flex: 0 0 auto;
+}
+
+.chip {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 2px solid transparent;
+}
+
+.chip-10 {
+    background: #555;
+}
+
+.chip-50 {
+    background: #007bff;
+}
+
+.chip-100 {
+    background: #ff4500;
+}
+
+.chip-500 {
+    background: #800080;
+}
+
+.chip-1000 {
+    background: #ffd700;
+    color: #000;
+}
+
+.chip.chip-active {
+    transform: scale(1.2);
+    border-color: #fff;
+    box-shadow: 0 0 15px #fff;
+}
+
+/* Thông tin người chơi */
+.player-info {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    flex: 0 0 auto;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    z-index: 20;
+}
+
+.footer-text {
+    width: 100%;
+    height: 20px;
+    background: url('../assets/images/www.png') center center / contain no-repeat;
+    opacity: 0.3;
+    margin-bottom: 15px;
+}
+
+/* Overlay thông báo */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 80%;
+}
+
+.btn-close-overlay {
+    margin-top: 15px;
+    padding: 10px 30px;
+    background: var(--gold);
+    border: none;
+    border-radius: 5px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Hiệu ứng thắng */
+.win-animation {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #FFF;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700, 2px 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    pointer-events: none;
+    animation: winUp 2.8s ease-out forwards;
+}
+
+@keyframes winUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0.4);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translate(-50%, -80%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -120%) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media screen and (max-height: 750px) {
+    .betting-board-container {
+        max-width: 400px;
+        margin: 5px auto;
+    }
+
+    .dice {
+        width: 75px;
+        height: 75px;
+    }
+
+    .header-title {
+        max-width: 200px;
+    }
+
+    .player-info {
+        font-size: 1rem;
+        padding: 5px 20px;
+    }
+}

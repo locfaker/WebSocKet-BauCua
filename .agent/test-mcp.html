@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MCP Chrome DevTools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .status {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 100px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .counter {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .counter-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .info-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Test MCP Chrome DevTools</h1>
+        
+        <div class="status">
+            <strong>Status:</strong> <span id="status">Ready to test!</span>
+        </div>
+
+        <div class="info-box">
+            <h3>Hướng dẫn test MCP:</h3>
+            <ul>
+                <li>Yêu cầu Antigravity mở trang này</li>
+                <li>Yêu cầu chụp ảnh màn hình</li>
+                <li>Yêu cầu click vào các nút</li>
+                <li>Yêu cầu kiểm tra console logs</li>
+                <li>Yêu cầu phân tích performance</li>
+            </ul>
+        </div>
+
+        <div class="counter">
+            <div>Click Counter:</div>
+            <div class="counter-value" id="counter">0</div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="incrementCounter()">
+                ➕ Tăng
+            </button>
+            <button class="btn-danger" onclick="decrementCounter()">
+                ➖ Giảm
+            </button>
+            <button class="btn-success" onclick="resetCounter()">
+                🔄 Reset
+            </button>
+            <button class="btn-info" onclick="logToConsole()">
+                📝 Log Console
+            </button>
+        </div>
+
+        <div id="output">Chờ thao tác...</div>
+    </div>
+
+    <script>
+        let counter = 0;
+        const counterElement = document.getElementById('counter');
+        const outputElement = document.getElementById('output');
+        const statusElement = document.getElementById('status');
+
+        function updateOutput(message) {
+            const timestamp = new Date().toLocaleTimeString('vi-VN');
+            outputElement.textContent = `[${timestamp}] ${message}\n` + outputElement.textContent;
+        }
+
+        function updateStatus(status) {
+            statusElement.textContent = status;
+        }
+
+        function incrementCounter() {
+            counter++;
+            counterElement.textContent = counter;
+            updateOutput(`Counter tăng lên: ${counter}`);
+            updateStatus('Counter đã tăng!');
+            console.log('Counter incremented to:', counter);
+        }
+
+        function decrementCounter() {
+            counter--;
+            counterElement.textContent = counter;
+            updateOutput(`Counter giảm xuống: ${counter}`);
+            updateStatus('Counter đã giảm!');
+            console.log('Counter decremented to:', counter);
+        }
+
+        function resetCounter() {
+            counter = 0;
+            counterElement.textContent = counter;
+            updateOutput('Counter đã được reset về 0');
+            updateStatus('Counter đã reset!');
+            console.log('Counter reset to 0');
+        }
+
+        function logToConsole() {
+            const testData = {
+                timestamp: new Date().toISOString(),
+                counter: counter,
+                userAgent: navigator.userAgent,
+                screenSize: `${window.innerWidth}x${window.innerHeight}`,
+                language: navigator.language
+            };
+            
+            console.log('=== Test Data ===');
+            console.log(testData);
+            console.warn('This is a warning message for testing');
+            console.error('This is an error message for testing');
+            console.table(testData);
+            
+            updateOutput('Đã log dữ liệu vào console. Mở DevTools để xem!');
+            updateStatus('Đã log vào console!');
+        }
+
+        // Log initial load
+        console.log('MCP Chrome DevTools Test Page Loaded!');
+        console.log('Page URL:', window.location.href);
+        console.log('User Agent:', navigator.userAgent);
+        
+        updateOutput('Trang đã load thành công!');
+        updateStatus('Ready to test!');
+
+        // Simulate some activity for testing
+        window.addEventListener('load', () => {
+            console.log('Window loaded event fired');
+            updateOutput('Window load event triggered');
+        });
+
+        // Add error handler for testing
+        window.addEventListener('error', (e) => {
+            console.error('Error caught:', e.message);
+            updateOutput(`Error: ${e.message}`);
+        });
+    </script>
+</body>
+</html>

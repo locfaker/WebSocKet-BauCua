@@ -1,0 +1,11 @@
+D:\baucua\src\BauCua.Shared\bin\Debug\net9.0\BauCua.Shared.deps.json
+D:\baucua\src\BauCua.Shared\bin\Debug\net9.0\BauCua.Shared.dll
+D:\baucua\src\BauCua.Shared\bin\Debug\net9.0\BauCua.Shared.pdb
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.AssemblyInfoInputs.cache
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.AssemblyInfo.cs
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.csproj.CoreCompileInputs.cache
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.dll
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\refint\BauCua.Shared.dll
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\BauCua.Shared.pdb
+D:\baucua\src\BauCua.Shared\obj\Debug\net9.0\ref\BauCua.Shared.dll

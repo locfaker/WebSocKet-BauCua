@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bầu Cua - Tôm Cá Online</title>
+    <meta name="description"
+        content="Trò chơi Bầu Cua Tôm Cá Online truyền thống Việt Nam, chơi miễn phí ngay trên trình duyệt">
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-wrapper">
+        <!-- Hoa Mai decoration -->
+        <div class="mai-flowers"></div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <img src="assets/images/tieude.png" alt="Bau Cua" class="logo-image">
+                <div class="loading-bar-container">
+                    <div id="loading-bar" class="loading-bar"></div>
+                </div>
+                <div id="loading-text" class="loading-percent">0%</div>
+                <button id="play-button" class="btn-play" style="display: none;"></button>
+            </div>
+        </div>
+
+        <!-- Main Game Interface -->
+        <div id="game-container" class="game-container">
+            <!-- Header Logo -->
+            <img src="assets/images/tieude.png" alt="Logo" class="header-title">
+
+            <!-- Dice Results Section -->
+            <div class="dice-section">
+                <div class="dice-wrapper">
+                    <div class="dice-container">
+                        <div id="dice-0" class="dice">
+                            <img src="assets/images/bau.png" alt="dice" class="dice-image">
+                        </div>
+                        <div class="dice-label">Xúc xắc 1</div>
+                    </div>
+                    <div class="dice-container">
+                        <div id="dice-1" class="dice">
+                            <img src="assets/images/cua.png" alt="dice" class="dice-image">
+                        </div>
+                        <div class="dice-label">Xúc xắc 2</div>
+                    </div>
+                    <div class="dice-container">
+                        <div id="dice-2" class="dice">
+                            <img src="assets/images/tom.png" alt="dice" class="dice-image">
+                        </div>
+                        <div class="dice-label">Xúc xắc 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls (Roll, Home, Sound) -->
+            <div class="control-section">
+                <button id="home-button" class="btn-home"></button>
+                <button id="roll-button" class="btn-roll"></button>
+                <button id="sound-button" class="btn-sound"></button>
+            </div>
+
+            <!-- Betting Board (Using table.png as background via wrapper) -->
+            <div class="betting-board-container">
+                <div class="betting-grid-wrapper">
+                    <div id="betting-grid" class="betting-grid">
+                        <!-- Row 1: Nai, Bau, Ga -->
+                        <div class="bet-card" data-symbol="nai">
+                            <div class="bet-amount" id="bet-nai">0</div>
+                        </div>
+                        <div class="bet-card" data-symbol="bau">
+                            <div class="bet-amount" id="bet-bau">0</div>
+                        </div>
+                        <div class="bet-card" data-symbol="ga">
+                            <div class="bet-amount" id="bet-ga">0</div>
+                        </div>
+                        <!-- Row 2: Ca, Cua, Tom -->
+                        <div class="bet-card" data-symbol="ca">
+                            <div class="bet-amount" id="bet-ca">0</div>
+                        </div>
+                        <div class="bet-card" data-symbol="cua">
+                            <div class="bet-amount" id="bet-cua">0</div>
+                        </div>
+                        <div class="bet-card" data-symbol="tom">
+                            <div class="bet-amount" id="bet-tom">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chip Selection -->
+            <div class="chip-section">
+                <div class="chip chip-10 chip-active" data-value="10">10</div>
+                <div class="chip chip-50" data-value="50">50</div>
+                <div class="chip chip-100" data-value="100">100</div>
+                <div class="chip chip-500" data-value="500">500</div>
+                <div class="chip chip-1000" data-value="1000">1K</div>
+            </div>
+
+            <!-- Player Wallet Info -->
+            <div id="player-info" class="player-info">
+                Số dư: <span id="balance">10000</span> VNĐ
+            </div>
+
+            <!-- Footer Logo -->
+            <div class="footer-text"></div>
+        </div>
+    </div>
+
+    <!-- Overlay thông báo -->
+    <div class="overlay" id="overlay" style="display: none;">
+        <div class="overlay-content" id="overlay-content">
+            <h2 id="overlay-title">Kết quả</h2>
+            <p id="overlay-message"></p>
+            <button class="btn-close-overlay" id="btn-close-overlay">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="sound-roll" src="assets/audio/roll.m4a" preload="auto"></audio>
+    <audio id="sound-win" src="assets/audio/roll.m4a" preload="auto"></audio>
+    <audio id="sound-lose" src="assets/audio/roll.m4a" preload="auto"></audio>
+    <audio id="sound-bet" src="assets/audio/roll.m4a" preload="auto"></audio>
+    <audio id="sound-bgm" src="assets/audio/bgm.m4a" preload="auto" loop></audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
