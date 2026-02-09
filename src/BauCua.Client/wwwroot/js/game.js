@@ -20,10 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     simulateLoading();
 });
 
+// Cấu hình URL Backend (Để trống "" nếu chạy cùng domain, hoặc điền link Render)
+const BACKEND_URL = "";
+
 // Khởi tạo SignalR
 async function initSignalR() {
     state.connection = new signalR.HubConnectionBuilder()
-        .withUrl("/baucua-hub")
+        .withUrl(BACKEND_URL + "/baucua-hub")
         .withAutomaticReconnect()
         .build();
 
