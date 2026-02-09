@@ -4,6 +4,11 @@
 
 Trò chơi Bầu Cua Tôm Cá truyền thống được tái hiện trên nền tảng Web với công nghệ SignalR cho trải nghiệm thời gian thực mượt mà.
 
+### 🔗 Link trải nghiệm trực tuyến
+- **Giao diện Web (Vercel):** [https://baucau-locdev.vercel.app](https://baucau-locdev.vercel.app)
+- **Backend API (Render):** [https://websocket-baucua-1.onrender.com](https://websocket-baucua-1.onrender.com)
+
+
 ## 🎯 Tính năng
 - ✅ Giao diện 100% bản gốc, tái tạo chuẩn xác bằng HTML5/CSS3.
 - ✅ Lắc xúc xắc thời gian thực .
